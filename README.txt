@@ -28,6 +28,11 @@ Easy handling for Automatic Broadcast Messages. You can set / add Messages in th
 *<yellow>
 *<white>
 
+=== Language ===
+* English (Default)
+* German
+* You want your Language in this Plugin? Send me a Message and i send you all Information.
+
 === Permissions ===
 * **announce.add**  // for add messages
 * **announce.delete** // for delete messages
@@ -36,11 +41,14 @@ Easy handling for Automatic Broadcast Messages. You can set / add Messages in th
 * **announce.admin** // all permissions in one
 
 === Next Implementations ===
-* Multi-Language (German)
-* Spoutcraft
-* more ???
+* Better Spout Notification
+* You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.3 ====
+* add simple Spout Notification
+* add Multi-Language (German and English)
+* fix some Bugs
 ==== Version 0.2 ====
 * add InGame Settings
 ==== Version 0.1 ====
