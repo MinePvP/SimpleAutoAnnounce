@@ -1,6 +1,11 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.task;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.getspout.spoutapi.Spout;
+import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.SpoutServer;
+import org.getspout.spoutapi.player.SpoutPlayer;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
@@ -27,9 +32,31 @@ public class AnnounceTask extends Task{
 			plugin.log(announce);
 		}
 		
-		for ( Player player : players ) {
+		if ( plugin.isSpoutServer() ) {
 			
-			player.sendMessage( Helper.format(announce) );
+			for ( SpoutPlayer spoutPlayer : Spout.getServer().getOnlinePlayers() ) {
+				
+				if ( spoutPlayer.isSpoutCraftEnabled() ) {
+					
+					// TODO Spout Notification
+					spoutPlayer.sendNotification( Helper.format( plugin.getSettingsManager().getAnnounceName() ), Helper.format( message ), Material.REDSTONE_TORCH_ON);
+					
+					
+					if ( plugin.getSettingsManager().getDebug() == true ) {
+						spoutPlayer.sendMessage("Spout Notification");
+					}
+					
+				} else {
+					spoutPlayer.sendMessage( Helper.format( announce ) );
+				}
+				
+			}
+			
+		} else {
+			
+			for ( Player player : players ) {
+				player.sendMessage( Helper.format(announce) );
+			}
 			
 		}
 		
