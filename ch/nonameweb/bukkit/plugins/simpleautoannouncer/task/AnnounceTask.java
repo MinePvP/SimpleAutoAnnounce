@@ -32,7 +32,7 @@ public class AnnounceTask extends Task{
 			plugin.log(announce);
 		}
 		
-		if ( plugin.isSpoutServer() ) {
+		if ( plugin.isSpoutServer() && plugin.getSettingsManager().getSpout() == true ) {
 			
 			for ( SpoutPlayer spoutPlayer : Spout.getServer().getOnlinePlayers() ) {
 				

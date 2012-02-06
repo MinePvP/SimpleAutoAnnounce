@@ -5,17 +5,20 @@ import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 
 public class SettingsCommand {
 	
 	private SimpleAutoAnnouncer plugin;
 	private SettingsManager settingsManager;
+	private LangInterface lang;
 	
 	public void execute( Player player, String[] subargs ) {
 		
 		this.plugin = SimpleAutoAnnouncer.getInstance();
 		this.settingsManager = plugin.getSettingsManager();
+		this.lang = plugin.getLangInterface();
 		
 		if ( player.hasPermission("announce.settings") || player.hasPermission("announce.admin") || player.isOp() ) {
 			
@@ -24,10 +27,20 @@ public class SettingsCommand {
 				
 				if ( subargs[0].equalsIgnoreCase("debug") ) {
 					
-					if ( Boolean.parseBoolean( subargs[1] ) ) {
+					Boolean bool = null;
+					bool = Boolean.parseBoolean( subargs[1] );
+					
+					if (  bool == true || bool == false ) {
 						settingsManager.setDebug( Boolean.parseBoolean( subargs[1] ) );
 						settingsManager.save();
-						player.sendMessage(ChatColor.GREEN + "The Debug Mode is now ON");
+						
+						if ( Boolean.parseBoolean( subargs[1]) == true ) {
+							player.sendMessage(ChatColor.GREEN + lang.get("The Debug Mode is now ON"));
+						} else {
+							player.sendMessage(ChatColor.GREEN + lang.get("The Debug Mode is now OFF"));
+						}
+						
+						
 					} else {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
@@ -37,7 +50,37 @@ public class SettingsCommand {
 					if ( subargs[1].equalsIgnoreCase("") == false  ) {
 						settingsManager.setAnnounceName( subargs[1] );
 						settingsManager.save();
-						player.sendMessage(ChatColor.GREEN + "The Announce will be now  " + Helper.format( subargs[1] ));
+						player.sendMessage(ChatColor.GREEN + lang.get("The Announce will be now ") + Helper.format( subargs[1] ));
+					} else {
+						player.sendMessage(ChatColor.RED + "/announce help settings");
+					}
+					
+				} else if ( subargs[0].equalsIgnoreCase("lang") ) {
+					
+					if ( subargs[1].equalsIgnoreCase("") == false  ) {
+						settingsManager.setLang( subargs[1] );
+						settingsManager.save();
+						plugin.resetLanguage();						
+						player.sendMessage(ChatColor.GREEN + lang.get("The Language has change to ") + subargs[1] );
+					} else {
+						player.sendMessage(ChatColor.RED + "/announce help settings");
+					}
+					
+				} else if ( subargs[0].equalsIgnoreCase("spout") ) {
+					
+					Boolean bool = null;
+					bool = Boolean.parseBoolean( subargs[1] );
+					
+					if (  bool == true || bool == false ) {
+						settingsManager.setSpout( Boolean.parseBoolean( subargs[1] ) );
+						settingsManager.save();
+						
+						if ( Boolean.parseBoolean( subargs[1]) == true ) {
+							player.sendMessage(ChatColor.GREEN + lang.get("The Spout Notification is ON"));
+						} else {
+							player.sendMessage(ChatColor.GREEN + lang.get("The Spout Notification is OFF"));
+						}
+					
 					} else {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
@@ -52,7 +95,7 @@ public class SettingsCommand {
 							settingsManager.setTime(time);
 							settingsManager.save();
 							plugin.restartAutoAnnounceTask();
-							player.sendMessage(ChatColor.GREEN + "The Time will be now " + time + " Minutes." );
+							player.sendMessage(ChatColor.GREEN + lang.get("The Time will be now ") + time + lang.get(" Minutes.") );
 						} else {
 							player.sendMessage(ChatColor.RED + "/announce help settings");
 						}
@@ -70,7 +113,7 @@ public class SettingsCommand {
 			
 			
 		} else {
-			player.sendMessage("You have not the Permissions (announce.settings).");
+			player.sendMessage(  lang.get("You have not the Permissions") + " (announce.add).");
 		}
 		
 	}

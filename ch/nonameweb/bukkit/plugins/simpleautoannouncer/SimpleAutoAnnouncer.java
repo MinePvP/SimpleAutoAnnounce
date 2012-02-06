@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
@@ -20,6 +21,8 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	// Spout
 	private Boolean isSpoutServer;
 	
+	// Language
+	private LangInterface lang;
 	
 	private SimpleAutoAnnouncerPlayerListener playerListener;
 	
@@ -44,6 +47,9 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		
 		// Listeners
 		this.playerListener = new SimpleAutoAnnouncerPlayerListener();
+		
+		// Language
+		this.lang = new LangInterface();
 		
 		// Tasks
 		this.createAutoAnnounceTask();
@@ -81,6 +87,10 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		this.createAutoAnnounceTask();
 	}
 	
+	public void resetLanguage() {
+		this.lang = new LangInterface();
+	}
+	
 	public static SimpleAutoAnnouncer getInstance() {
 		return plugin;
 	}
@@ -95,6 +105,10 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	
 	public TaskManager getTaskManager() {
 		return this.taskManager;
+	}
+	
+	public LangInterface getLangInterface() {
+		return this.lang;
 	}
 	
 	public Boolean isSpoutServer() {

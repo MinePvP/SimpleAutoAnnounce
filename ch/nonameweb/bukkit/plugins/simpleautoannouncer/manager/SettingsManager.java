@@ -17,6 +17,8 @@ public class SettingsManager {
 	private Configuration config;
 	
 	private Boolean debug;
+	private String lang;
+	private Boolean spout;
 	
 	private String announceName;
 	private Integer time;
@@ -36,6 +38,9 @@ public class SettingsManager {
 	public void addDeafaults() {
 		
 		config.addDefault("Settings.Debug", false);
+		config.addDefault("Settings.Language", "EN");
+		
+		config.addDefault("Settings.SpoutNotification", true);
 		
 		config.addDefault("Settings.Announce.Name", "<red>Announcement");
 		config.addDefault("Settings.Time", 10);
@@ -60,6 +65,8 @@ public class SettingsManager {
 		plugin.reloadConfig();
 		
 		setDebug( config.getBoolean("Settings.Debug") );
+		setLang( config.getString("Settings.Language") );
+		setSpout( config.getBoolean("Settings.SpoutNotification") );
 		
 		setAnnounceName( config.getString("Settings.Announce.Name") );
 		setTime( config.getInt("Settings.Time") );
@@ -78,6 +85,8 @@ public class SettingsManager {
 		this.config = plugin.getConfig();
 		
 		config.set("Settings.Debug", getDebug() );
+		config.set("Settings.Language", getLang() );
+		config.set("Settings.SpoutNotification", getSpout() );
 		
 		config.set("Settings.Announce.Name", getAnnounceName() );
 		config.set("Settings.Time",	getTime() );
@@ -161,5 +170,25 @@ public class SettingsManager {
 
 	public void setDebug(Boolean debug) {
 		this.debug = debug;
+	}
+
+
+	public String getLang() {
+		return lang;
+	}
+
+
+	public void setLang(String lang) {
+		this.lang = lang;
+	}
+
+
+	public Boolean getSpout() {
+		return spout;
+	}
+
+
+	public void setSpout(Boolean spout) {
+		this.spout = spout;
 	}
 }

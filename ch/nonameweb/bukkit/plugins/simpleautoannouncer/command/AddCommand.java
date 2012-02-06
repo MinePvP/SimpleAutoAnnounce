@@ -5,24 +5,27 @@ import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 
 public class AddCommand {
 	
 	private SimpleAutoAnnouncer plugin;
 	private SettingsManager settingsManager;
+	private LangInterface lang;
 	
 	public void execute( Player player, String[] subargs ) {
 		
 		this.plugin = SimpleAutoAnnouncer.getInstance();
 		this.settingsManager = plugin.getSettingsManager();
+		this.lang = plugin.getLangInterface();
 		
 		if ( player.hasPermission("announce.add") || player.hasPermission("announce.admin") || player.isOp() ) {
 			
 			
 			if ( subargs.length < 1 ) {
-				player.sendMessage("How to use It:");
-				player.sendMessage( ChatColor.YELLOW +"/announce add <yellow>This is a Message.");
+				player.sendMessage( lang.get("How to use It:") );
+				player.sendMessage( ChatColor.YELLOW +"/announce add <yellow> " + lang.get("This is a Message."));
 				return;
 			}
 			
@@ -34,11 +37,11 @@ public class AddCommand {
 			
 			settingsManager.addMessage( message );
 			settingsManager.save();
-			player.sendMessage( ChatColor.GREEN + "The Message was added.");
+			player.sendMessage( ChatColor.GREEN + lang.get("The Message was added."));
 			player.sendMessage(Helper.format(message));
 			
 		} else {
-			player.sendMessage("You have not the Permissions (announce.add).");
+			player.sendMessage(  lang.get("You have not the Permissions") + " (announce.add).");
 		}
 		
 	}
