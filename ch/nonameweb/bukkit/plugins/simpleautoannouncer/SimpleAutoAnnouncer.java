@@ -17,12 +17,25 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	private CommandManager commandManager;
 	private TaskManager taskManager;
 	
+	// Spout
+	private Boolean isSpoutServer;
+	
+	
 	private SimpleAutoAnnouncerPlayerListener playerListener;
 	
 	@Override
 	public void onEnable() {
 		
 		plugin = this;
+		
+		// Spout server detection
+		try {
+			Class.forName("org.getspout.spoutapi.player.SpoutPlayer");
+			isSpoutServer = true;
+			
+		} catch (ClassNotFoundException e) {
+			isSpoutServer = false;
+		}
 		
 		// Manager
 		this.settingsManager = new SettingsManager();
@@ -83,4 +96,7 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		return this.taskManager;
 	}
 	
+	public Boolean isSpoutServer() {
+		return this.isSpoutServer;
+	}
 }
