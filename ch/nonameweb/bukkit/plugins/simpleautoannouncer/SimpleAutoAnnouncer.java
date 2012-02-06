@@ -32,16 +32,8 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		// Listeners
 		this.playerListener = new SimpleAutoAnnouncerPlayerListener();
 		
-		
-		AnnounceTask task = new AnnounceTask();
-		
-		long delay = 0;
-		long time = 0;
-		
-		time = ( 60 * settingsManager.getTime() ) * 20L;
-		delay = time / 2;
-		
-		this.taskManager.createAsyncRepeatingTask(task, delay, time);
+		// Tasks
+		this.createAutoAnnounceTask();
 		
 		this.log("Enabled");
 	}
@@ -58,9 +50,7 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		Logger.getLogger("Minecraft").info("[SimpleAutoAnnounce] " + message);
 	}
 	
-	public void restartAutoAnnounceTask() {
-		
-		this.taskManager.stopAllTask();
+	public void createAutoAnnounceTask() {
 		
 		AnnounceTask task = new AnnounceTask();
 		
@@ -71,7 +61,10 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		delay = time / 2;
 		
 		this.taskManager.createAsyncRepeatingTask(task, delay, time);
-		
+	}
+	
+	public void restartAutoAnnounceTask() {
+		this.taskManager.stopAllTask();
 	}
 	
 	public static SimpleAutoAnnouncer getInstance() {
