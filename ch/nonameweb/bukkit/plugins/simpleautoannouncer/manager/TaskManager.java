@@ -10,6 +10,7 @@ public class TaskManager {
 
 	private SimpleAutoAnnouncer plugin;
 	
+	private ArrayList<Task> allTasks;
 	private ArrayList<Task> inaktiveTasks;
 	
 	
@@ -17,6 +18,7 @@ public class TaskManager {
 		this.plugin = SimpleAutoAnnouncer.getInstance();
 		
 		this.inaktiveTasks = new ArrayList<Task>();
+		this.allTasks = new ArrayList<Task>();
 		
 		// TaskManagerTask für stoppen von Tasks alle 10min oder so.
 		
@@ -33,7 +35,8 @@ public class TaskManager {
 		if ( pid != null ) {
 			
 			task.setPid(pid);
-						
+			this.allTasks.add(task);
+			
 			return true;
 		}
 		
@@ -50,7 +53,8 @@ public class TaskManager {
 		if ( pid != null ) {
 			
 			task.setPid(pid);
-						
+			this.allTasks.add(task);
+			
 			return true;
 		}
 		
@@ -61,16 +65,26 @@ public class TaskManager {
 	public void setInaktiv( Task task ) {
 		
 		if ( task != null ) {
-			
 			this.inaktiveTasks.add(task);
-			
 		}
-		
 		
 	}
 	
 	public ArrayList<Task> getInaktiveTasks() {
 		return this.inaktiveTasks;
+	}
+	
+	
+	public void stopAllTask() {
+		
+		if ( allTasks.size() > 0 ) {
+			
+			for ( Task task : this.allTasks ) {
+				plugin.getServer().getScheduler().cancelTask( task.getPid() );
+			}
+			
+		}
+		
 	}
 	
 }

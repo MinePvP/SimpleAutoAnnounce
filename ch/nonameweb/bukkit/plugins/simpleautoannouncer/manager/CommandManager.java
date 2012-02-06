@@ -7,6 +7,7 @@ import ch.nonameweb.bukkit.plugins.simpleautoannouncer.command.AddCommand;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.command.DeleteCommand;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.command.HelpCommand;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.command.ListCommand;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.command.SettingsCommand;
 
 public class CommandManager {	
 	
@@ -15,6 +16,7 @@ public class CommandManager {
 	private AddCommand addCommand;
 	private ListCommand listCommand;
 	private DeleteCommand deleteCommand;
+	private SettingsCommand settingsCommand;
 	
 	
 	public CommandManager() {
@@ -23,6 +25,7 @@ public class CommandManager {
 		this.addCommand = new AddCommand();
 		this.deleteCommand = new DeleteCommand();
 		this.listCommand = new ListCommand();
+		this.settingsCommand = new SettingsCommand();
 		
 	}
 	
@@ -40,6 +43,8 @@ public class CommandManager {
 	        	deleteCommand.execute(player, subargs);
 	        } else if ( subcommand.equalsIgnoreCase("list") ) {
 	        	listCommand.execute(player, subargs);
+	        } else if ( subcommand.equalsIgnoreCase("settings") ) {
+	        	settingsCommand.execute(player, subargs);
 	        } else if ( subcommand.equalsIgnoreCase("help") ) {
 	        	helpCommand.execute(player, subargs);
 	        } else {
