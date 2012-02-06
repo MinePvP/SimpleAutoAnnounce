@@ -1,10 +1,10 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.task;
 
-import org.bukkit.Material;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.getspout.spoutapi.Spout;
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.SpoutServer;
+import org.getspout.spoutapi.gui.GenericLabel;
+import org.getspout.spoutapi.gui.WidgetAnchor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
@@ -26,7 +26,7 @@ public class AnnounceTask extends Task{
 		
 		Player[] players = this.plugin.getServer().getOnlinePlayers();
 		
-		String announce = plugin.getSettingsManager().getAnnounceName() + " : " + message;
+		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
 		
 		if ( plugin.getSettingsManager().getDebug() == true ) {
 			plugin.log(announce);
@@ -39,12 +39,7 @@ public class AnnounceTask extends Task{
 				if ( spoutPlayer.isSpoutCraftEnabled() ) {
 					
 					// TODO Spout Notification
-					spoutPlayer.sendNotification( Helper.format( plugin.getSettingsManager().getAnnounceName() ), Helper.format( message ), Material.REDSTONE_TORCH_ON);
-					
-					
-					if ( plugin.getSettingsManager().getDebug() == true ) {
-						spoutPlayer.sendMessage("Spout Notification");
-					}
+					this.addSpoutNotification(spoutPlayer, announce);
 					
 				} else {
 					spoutPlayer.sendMessage( Helper.format( announce ) );
@@ -65,6 +60,25 @@ public class AnnounceTask extends Task{
 		if ( counter == plugin.getSettingsManager().getMessages().size() ) {
 			counter = 0;
 		}
+		
+	}
+	
+	private void addSpoutNotification( SpoutPlayer player, String announce ) {
+		
+		GenericLabel label = new GenericLabel( Helper.format(announce) );
+		label.setAuto(true).setX(10).setY(10);
+		label.setMaxHeight(20);
+		label.setMaxWidth(400);
+		label.setMarginTop(10);
+		label.setMarginLeft(10);
+		label.setAnchor(WidgetAnchor.TOP_LEFT);
+		
+		player.getMainScreen().attachWidget(plugin, label);
+		
+		NotificationTask task = new NotificationTask(player, label);
+		
+		plugin.getTaskManager().createAsyncDelayedTask(task, 200L);
+		
 		
 	}
 	

@@ -78,6 +78,7 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	
 	public void restartAutoAnnounceTask() {
 		this.taskManager.stopAllTask();
+		this.createAutoAnnounceTask();
 	}
 	
 	public static SimpleAutoAnnouncer getInstance() {

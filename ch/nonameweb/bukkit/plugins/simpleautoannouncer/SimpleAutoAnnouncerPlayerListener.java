@@ -1,7 +1,5 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer;
 
-import java.util.logging.Logger;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

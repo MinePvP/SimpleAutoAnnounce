@@ -101,19 +101,14 @@ public class SettingsManager {
 	}
 	
 	
-	public void setMessages(List<Object> messages) {
+	public void setMessages(List<String> messages) {
 		
 		this.messages = new ArrayList<String>();
 		
-		for ( Object obj : messages ) {
-			this.messages.add(obj.toString());
-		}
-		
-		/*
 		for ( String message : messages ) {
 			this.messages.add(message);
 		}
-		*/
+		
 		
 	}
 	

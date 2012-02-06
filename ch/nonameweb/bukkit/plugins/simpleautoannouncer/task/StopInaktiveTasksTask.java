@@ -17,7 +17,7 @@ public class StopInaktiveTasksTask extends Task {
 			
 			plugin.getServer().getScheduler().cancelTask( task.getPid() );
 			
-		}		
+		}
 		
 	}
 
