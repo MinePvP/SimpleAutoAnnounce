@@ -8,7 +8,9 @@ import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.AnnounceSpoutTask;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.AnnounceTask;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.Task;
 
 public class SimpleAutoAnnouncer extends JavaPlugin {
 
@@ -71,7 +73,13 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	
 	public void createAutoAnnounceTask() {
 		
-		AnnounceTask task = new AnnounceTask();
+		Task task = null;
+		
+		if ( this.isSpoutServer() == true ) {
+			task = new AnnounceSpoutTask();
+		} else {
+			task = new AnnounceTask();
+		}
 		
 		long delay = 0;
 		long time = 0;
