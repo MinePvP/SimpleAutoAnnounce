@@ -71,8 +71,8 @@ public class AnnounceSpoutTask extends Task{
 		// TODO Gradian Width anpassen an stringlänge
 		
 		GenericGradient gradient = new GenericGradient();
-		gradient.setTopColor(new Color(1.0F, 1.0F, 1.0F, 1.0F)); // White (order is Red, Green, Blue, Alpha)
-		gradient.setBottomColor(new Color(1.0F, 0, 0, 1.0F)); // Red
+		//gradient.setTopColor( new Color(00,00,00) );
+		//gradient.setBottomColor( new Color(00,00,00)  );
 		gradient.setHeight(30).setWidth(200);
 		
 		gradient.setPriority(RenderPriority.High);

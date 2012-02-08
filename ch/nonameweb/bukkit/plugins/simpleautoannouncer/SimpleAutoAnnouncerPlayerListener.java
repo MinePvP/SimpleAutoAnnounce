@@ -42,7 +42,7 @@ public class SimpleAutoAnnouncerPlayerListener implements Listener {
 		
 		String command = split[0];
 		
-		if ( command.equalsIgnoreCase("announce") ) {
+		if ( command.equalsIgnoreCase("announce") || command.equalsIgnoreCase("saa") ) {
 			
 			plugin.log("Command from : " + event.getPlayer().getName() + " : " + event.getMessage().toString());
 			
