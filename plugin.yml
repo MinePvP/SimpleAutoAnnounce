@@ -1,6 +1,6 @@
 name: SimpleAutoAnnouncer
 main: ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer
-version: 0.4
+version: 0.4.1
 commands:
   announce:
     description: Main Command

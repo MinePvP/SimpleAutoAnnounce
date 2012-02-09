@@ -45,6 +45,8 @@ Easy handling for Automatic Broadcast Messages. You can set / add Messages in th
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.4.1 ====
+* fix German <-> English
 ==== Version 0.4 ====
 * better Spout Notification
 * bug fix when no SpoutPlugin installed
