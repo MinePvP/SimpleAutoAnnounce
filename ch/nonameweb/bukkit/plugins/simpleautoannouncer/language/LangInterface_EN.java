@@ -9,55 +9,55 @@ public class LangInterface_EN {
 	private String parseString(String s){
 		 
 		if(s.equalsIgnoreCase("You have not the Permissions")){
-			return "Du hast nicht die nötigen Rechte";
+			return "You have not the Permissions";
 		} else if ( s.equalsIgnoreCase("How to use It:") ) {
-			return "So benutzt du den Befehl:";
+			return "How to use It:";
 		}  else if ( s.equalsIgnoreCase("This is a Message.") ) {
-			return "Dies ist eine Nachricht.";
+			return "This is a Message.";
 		} else if ( s.equalsIgnoreCase("The Message was added.") ) {
-			return "Die Nachricht wurde hinzugefügt.";
+			return "The Message was added.";
 		} else if ( s.equalsIgnoreCase("Error : There was no Message found with this Id.") ) {
-			return "Fehler : Es ist keine Nachricht mit dieser Id gefunden worden.";
+			return "Error : There was no Message found with this Id.";
 		} else if ( s.equalsIgnoreCase("The Messages is Deletet.") ) {
-			return "Die Nachricht wurde gelöscht";
+			return "The Messages is Deletet.";
 		} else if ( s.equalsIgnoreCase("Message") ) {
-			return "Nachricht";
+			return "Message";
 		} else if ( s.equalsIgnoreCase("Set de Debug Mode") ) {
-			return "Debug Modus einschalten";
+			return "Set de Debug Mode";
 		} else if ( s.equalsIgnoreCase("Change de Announce Name") ) {
-			return "Den Announcement Namen ändern";
+			return "Change de Announce Name";
 		} else if ( s.equalsIgnoreCase("Change the Announce Time") ) {
-			return "Die Zeit zwischen den Announcen ändern";
+			return "Change the Announce Time";
 		} else if ( s.equalsIgnoreCase("Change the Language") ) {
-			return "Sprache ändern";
+			return "Change the Language";
 		} else if ( s.equalsIgnoreCase("Add a new Message") ) {
-			return "Neue Nachricht hinzufügen";
+			return "Add a new Message";
 		} else if ( s.equalsIgnoreCase("Delete a Message on his Id") ) {
-			return "Löschen einer Nachricht";
+			return "Delete a Message on his Id";
 		} else if ( s.equalsIgnoreCase("List all Messages") ) {
-			return "Alle Nachrichten auflisten";
+			return "List all Messages";
 		} else if ( s.equalsIgnoreCase("Change the Settings InGame") ) {
-			return "Ändern der Einstellungen im Spiel";
+			return "Change the Settings InGame";
 		} else if ( s.equalsIgnoreCase("The Debug Mode is now ON") ) {
-			return "Der Debug Modus ist nun eingeschalten";
-		} else if ( s.equalsIgnoreCase("The Debug Mode is now OFF") ) {
-			return "Der Debug Modus ist nun ausgeschaltet";
+			return "The Debug Mode is now ON";
+		} else if ( s.equalsIgnoreCase("The Debug Mode is now ON") ) {
+			return "The Debug Mode is now OFF";
 		} else if ( s.equalsIgnoreCase("The Announce will be now ") ) {
-			return "Der Announce Titel ist nun ";
+			return "The Announce will be now ";
 		} else if ( s.equalsIgnoreCase("The Language has change to ") ) {
-			return "Die Sprache ist nun ";
+			return "The Language has change to ";
 		} else if ( s.equalsIgnoreCase("The Time will be now ") ) {
-			return "Die Zeit zwischen den Announcen ist nun ";
+			return "The Time will be now ";
 		} else if ( s.equalsIgnoreCase(" Minutes.") ) {
-			return " Minuten";
+			return " Minutes.";
 		} else if ( s.equalsIgnoreCase("The Spout Notification is ON") ) {
-			return "Die Spout Benachrichtigung ist eingeschaltet";
+			return "The Spout Notification is ON";
 		} else if ( s.equalsIgnoreCase("The Spout Notification is OFF") ) {
-			return "Die Spout Benachrichtigung ist ausgeschaltet";
+			return "The Spout Notification is OFF";
 		} else if ( s.equalsIgnoreCase("Change the SpoutNotification") ) {
-			return "Ändern der Spout Benachrichtigung";
+			return "Change the SpoutNotification";
 		} else {
-			return "keine übersetzung vorhanden";
+			return "no translation";
 		}
 		
 	}
