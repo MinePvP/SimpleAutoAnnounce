@@ -27,13 +27,73 @@ public class AnnounceSpoutTask extends Task{
 		
 		String message = plugin.getSettingsManager().getMessages().get( counter );
 		
-		Player[] players = this.plugin.getServer().getOnlinePlayers();
+		// Commands
+		if ( message.startsWith("!") ) {
+			
+			String messageNew = message.replaceFirst("!", "");			
+			
+			executeCommand(messageNew);
+			
+		} else if ( message.startsWith("@") ) {
+			
+			String[] split = message.split(" ");
+			String world = split[0].replaceFirst("@", "");
+			String messageNew = message.replaceFirst( split[0] + " ", "");
+			sendAnnounceToWorld(world, messageNew);
+			
+		} else if ( message.startsWith(")") ) {
+			next();
+		} else {
+			
+			String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+			
+			if ( plugin.isSpoutServer() && plugin.getSettingsManager().getSpout() == true ) {
+				
+				for ( SpoutPlayer spoutPlayer : Spout.getServer().getOnlinePlayers() ) {
+					
+					if ( spoutPlayer.isSpoutCraftEnabled() ) {
+						
+						// TODO Spout Notification
+						this.addSpoutNotification(spoutPlayer, announce);
+						
+					} else {
+						spoutPlayer.sendMessage( Helper.format( announce ) );
+					}
+					
+				}
+				
+			} else {
+				
+				Player[] players = this.plugin.getServer().getOnlinePlayers();
+				
+				for ( Player player : players ) {
+					player.sendMessage( Helper.format(announce) );
+				}
+				
+			}
+			
+			next();
+		}
 		
-		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+	}
+	
+	
+	public void executeCommand( String command ) {
+		
+		plugin.getServer().dispatchCommand( plugin.getServer().getConsoleSender(), command);
 		
 		if ( plugin.getSettingsManager().getDebug() == true ) {
-			plugin.log(announce);
+			plugin.log(command);
 		}
+		
+		next();
+		run();
+	}
+	
+	
+	public void sendAnnounceToWorld( String world, String message ) {
+		
+		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
 		
 		if ( plugin.isSpoutServer() && plugin.getSettingsManager().getSpout() == true ) {
 			
@@ -41,22 +101,34 @@ public class AnnounceSpoutTask extends Task{
 				
 				if ( spoutPlayer.isSpoutCraftEnabled() ) {
 					
-					// TODO Spout Notification
-					this.addSpoutNotification(spoutPlayer, announce);
+					if ( spoutPlayer.getWorld().getName().equalsIgnoreCase( world ) ) {
+						this.addSpoutNotification(spoutPlayer, announce);
+					}
 					
 				} else {
-					spoutPlayer.sendMessage( Helper.format( announce ) );
+					if ( spoutPlayer.getWorld().getName().equalsIgnoreCase( world ) ) {
+						spoutPlayer.sendMessage( Helper.format( announce ) );
+					}
 				}
 				
 			}
 			
 		} else {
 			
+			Player[] players = this.plugin.getServer().getOnlinePlayers();
+			
 			for ( Player player : players ) {
 				player.sendMessage( Helper.format(announce) );
 			}
 			
 		}
+		
+		next();
+		run();
+	}
+	
+	
+	public void next() {
 		
 		counter++;
 		
@@ -91,5 +163,6 @@ public class AnnounceSpoutTask extends Task{
 		plugin.getTaskManager().createAsyncDelayedTask(task, 200L);
 		
 	}
+	
 	
 }

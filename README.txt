@@ -2,6 +2,22 @@
 
 Easy handling for Automatic Broadcast Messages. You can set / add Messages in the Config ore InGame. The Messages will be send over a Time Interval (Default 10 Minutes) to all Online Players.
 
+
+=== Message Formation ===
+
+Message:
+  - 'This is a Normal Announce for all Players in all Worlds'  -> 8.00am
+  - '@world This is a Announce for all Players who are on the World world' -> 8.10am
+  - '@world_nether This is a Message at the same time as the upper Message' -> 8.10am
+  - ')' // This is a Bracke and says there is no other Message for this Time
+  - 'Announce an normal Announcement' -> 8.20am
+  - 'Next Announce' -> 8.30am
+  - '!kill reini' -> 8.40am
+  - 'Announcement for all People' -> 8.40am
+  - ')'
+  - 'Announcement' -> 8.50am
+
+
 === Commands ===
 */announce help
 */announce help settings
@@ -45,6 +61,9 @@ Easy handling for Automatic Broadcast Messages. You can set / add Messages in th
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.5 ====
+* add Commands as a Message
+* add diffrent World Messages
 ==== Version 0.4.1 ====
 * fix German <-> English
 ==== Version 0.4 ====

@@ -20,17 +20,79 @@ public class AnnounceTask extends Task{
 		
 		String message = plugin.getSettingsManager().getMessages().get( counter );
 		
+		// Commands
+		if ( message.startsWith("!") ) {
+			
+			String messageNew = message.replaceFirst("!", "");			
+			
+			executeCommand(messageNew);
+			
+		} else if ( message.startsWith("@") ) {
+			
+			String[] split = message.split(" ");
+			String world = split[0].replaceFirst("@", "");
+			String messageNew = message.replaceFirst( split[0] + " ", "");
+			sendAnnounceToWorld(world, messageNew);
+			
+		} else if ( message.startsWith(")") ) {
+			next();
+		} else {
+			
+			Player[] players = this.plugin.getServer().getOnlinePlayers();
+			
+			String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+			
+			if ( plugin.getSettingsManager().getDebug() == true ) {
+				plugin.log(announce);
+			}
+						
+			for ( Player player : players ) {
+				player.sendMessage( Helper.format(announce) );
+			}
+			
+			next();
+		}
+		
+	}
+	
+	
+	public void executeCommand( String command ) {
+		
+		plugin.getServer().dispatchCommand( plugin.getServer().getConsoleSender(), command);
+		
+		if ( plugin.getSettingsManager().getDebug() == true ) {
+			plugin.log(command);
+		}
+		
+		next();
+		run();
+	}
+	
+	
+	public void sendAnnounceToWorld( String world, String message ) {
+		
 		Player[] players = this.plugin.getServer().getOnlinePlayers();
 		
 		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
 		
-		if ( plugin.getSettingsManager().getDebug() == true ) {
-			plugin.log(announce);
-		}
-					
 		for ( Player player : players ) {
-			player.sendMessage( Helper.format(announce) );
+			
+			if ( player.getWorld().getName().equalsIgnoreCase(world) ) {
+				player.sendMessage( Helper.format(announce) );
+			}
+			
 		}
+		
+		if ( plugin.getSettingsManager().getDebug() == true ) {
+			plugin.log( world + " -> " + announce );
+		}
+		
+		next();
+		run();
+	}
+	
+	
+	public void next() {
 		
 		counter++;
 		
