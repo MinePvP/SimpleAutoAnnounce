@@ -1,9 +1,7 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.task;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.getspout.spoutapi.Spout;
-import org.getspout.spoutapi.gui.Color;
 import org.getspout.spoutapi.gui.GenericGradient;
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.RenderPriority;
@@ -45,7 +43,7 @@ public class AnnounceSpoutTask extends Task{
 			next();
 		} else {
 			
-			String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+			String announce = plugin.getSettingsManager().getAnnounceName() + message;
 			
 			if ( plugin.isSpoutServer() && plugin.getSettingsManager().getSpout() == true ) {
 				
@@ -93,7 +91,7 @@ public class AnnounceSpoutTask extends Task{
 	
 	public void sendAnnounceToWorld( String world, String message ) {
 		
-		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+		String announce = plugin.getSettingsManager().getAnnounceName() + message;
 		
 		if ( plugin.isSpoutServer() && plugin.getSettingsManager().getSpout() == true ) {
 			

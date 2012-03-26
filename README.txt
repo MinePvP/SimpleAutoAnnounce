@@ -47,7 +47,12 @@ Message:
 === Language ===
 * English (Default)
 * German
-* You want your Language in this Plugin? Send me a Message and i send you all Information.
+
+You can add your own Language! Copy the en_US.yml file to 
+yourLanguage.yml and Change the Messages in the the File.
+
+Then change the Conifig local to your new FileName witouht 
+the ending (.yml)
 
 === Permissions ===
 * **announce.add**  // for add messages
@@ -61,6 +66,13 @@ Message:
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.6 ====
+* add easy way to add your own Language
+==== Version 0.5.2 ====
+* remove the announce ":" now you can add your own
+* works with Craftbukkit-1.2.3-R0
+==== Version 0.5.1 ====
+* works with Craftbukkit-1.1-R4
 ==== Version 0.5 ====
 * add Commands as a Message
 * add diffrent World Messages

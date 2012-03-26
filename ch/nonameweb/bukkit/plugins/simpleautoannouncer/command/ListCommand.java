@@ -5,26 +5,26 @@ import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
-import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 
 public class ListCommand {
 	
 	private SimpleAutoAnnouncer plugin;
 	private SettingsManager settingsManager;
-	private LangInterface lang;
+	private LocalManager local;
 	
 	public void execute( Player player, String[] subargs ) {
 		
 		this.plugin = SimpleAutoAnnouncer.getInstance();
 		this.settingsManager = plugin.getSettingsManager();
-		this.lang = plugin.getLangInterface();
-
+		this.local = plugin.getLocalManager();
+		
 		if ( player.hasPermission("announce.list") || player.hasPermission("announce.admin") || player.isOp() ) {
 			
 			player.sendMessage( ChatColor.GREEN + "-----------------------------------------------------");
 			
-			player.sendMessage( ChatColor.YELLOW + "ID - " + lang.get("Message"));
+			player.sendMessage( ChatColor.YELLOW + "ID - " + local.getStr("COMMAND_LIST_MESSAGE"));
 			
 			Integer id = 0;
 			
@@ -37,7 +37,7 @@ public class ListCommand {
 			
 			player.sendMessage( ChatColor.GREEN + "-----------------------------------------------------");
 		} else {
-			player.sendMessage(  lang.get("You have not the Permissions") + " (announce.list).");
+			player.sendMessage(  local.getStr("PERMISSION_YOU_HAVE_NOT_THE_PERMISSIONS") + " (announce.list).");
 		}
 		
 	}

@@ -1,11 +1,13 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer;
 
+import java.io.File;
 import java.util.logging.Logger;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import ch.nonameweb.bukkit.plugins.simpleautoannouncer.language.LangInterface;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.AnnounceSpoutTask;
@@ -19,12 +21,10 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	private SettingsManager settingsManager;
 	private CommandManager commandManager;
 	private TaskManager taskManager;
+	private LocalManager localManager;
 	
 	// Spout
 	private Boolean isSpoutServer;
-	
-	// Language
-	private LangInterface lang;
 	
 	private SimpleAutoAnnouncerPlayerListener playerListener;
 	
@@ -42,16 +42,18 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 			isSpoutServer = false;
 		}
 		
+		// Resources
+		saveResource("en_US.yml", true);
+		saveResource("de_DE.yml", true);
+		
 		// Manager
 		this.settingsManager = new SettingsManager();
+		this.localManager = new LocalManager();		
 		this.commandManager = new CommandManager();
 		this.taskManager = new TaskManager();
 		
 		// Listeners
 		this.playerListener = new SimpleAutoAnnouncerPlayerListener();
-		
-		// Language
-		this.lang = new LangInterface();
 		
 		// Tasks
 		this.createAutoAnnounceTask();
@@ -90,13 +92,13 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		this.taskManager.createAsyncRepeatingTask(task, delay, time);
 	}
 	
+	public void resetLocal() {
+		localManager = new LocalManager();
+	}
+	
 	public void restartAutoAnnounceTask() {
 		this.taskManager.stopAllTask();
 		this.createAutoAnnounceTask();
-	}
-	
-	public void resetLanguage() {
-		this.lang = new LangInterface();
 	}
 	
 	public static SimpleAutoAnnouncer getInstance() {
@@ -115,8 +117,8 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		return this.taskManager;
 	}
 	
-	public LangInterface getLangInterface() {
-		return this.lang;
+	public LocalManager getLocalManager() {
+		return this.localManager;
 	}
 	
 	public Boolean isSpoutServer() {

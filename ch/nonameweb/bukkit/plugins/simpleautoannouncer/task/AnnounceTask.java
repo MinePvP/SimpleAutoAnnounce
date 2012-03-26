@@ -1,6 +1,5 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.task;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
@@ -40,7 +39,7 @@ public class AnnounceTask extends Task{
 			
 			Player[] players = this.plugin.getServer().getOnlinePlayers();
 			
-			String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+			String announce = plugin.getSettingsManager().getAnnounceName() + message;
 			
 			if ( plugin.getSettingsManager().getDebug() == true ) {
 				plugin.log(announce);
@@ -73,7 +72,7 @@ public class AnnounceTask extends Task{
 		
 		Player[] players = this.plugin.getServer().getOnlinePlayers();
 		
-		String announce = plugin.getSettingsManager().getAnnounceName() + ChatColor.WHITE + " : " + message;
+		String announce = plugin.getSettingsManager().getAnnounceName() + message;
 		
 		for ( Player player : players ) {
 			
