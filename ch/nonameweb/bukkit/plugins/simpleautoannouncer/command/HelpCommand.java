@@ -31,6 +31,7 @@ public class HelpCommand {
 			
 			player.sendMessage( ChatColor.YELLOW + "/announce add <message>" + ChatColor.GRAY + "// " + local.getStr("COMMAND_HELP_ADD"));
 			player.sendMessage( ChatColor.YELLOW + "/announce delete <message id>" + ChatColor.GRAY + "// " + local.getStr("COMMAND_HELP_DELETE"));
+			player.sendMessage( ChatColor.YELLOW + "/announce force <message id>" + ChatColor.GRAY + "// " + local.getStr("COMMAND_HELP_FORCE"));
 			player.sendMessage( ChatColor.YELLOW + "/announce list " + ChatColor.GRAY + "// " + local.getStr("COMMAND_HELP_LIST"));
 			player.sendMessage( ChatColor.YELLOW + "/announce settings " + ChatColor.GRAY + "// " + local.getStr("COMMAND_HELP_SETTINGS"));
 			

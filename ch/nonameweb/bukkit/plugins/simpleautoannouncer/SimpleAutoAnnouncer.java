@@ -1,15 +1,15 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.metrics.Metrics;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.AnnounceSpoutTask;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.AnnounceTask;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.task.Task;
@@ -32,6 +32,13 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	public void onEnable() {
 		
 		plugin = this;
+		
+		// Metrics Statistik
+		try {
+			Metrics metrics = new Metrics(this); metrics.start();
+		} catch (IOException e) { // Failed to submit the stats :-(
+			System.out.println("Error Submitting stats!");
+		}
 		
 		// Spout server detection
 		try {

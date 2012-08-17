@@ -79,6 +79,6 @@ public class LocalManager {
 		
 		return string;
 		
-	}	
+	}
 	
 }

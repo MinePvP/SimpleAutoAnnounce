@@ -1,5 +1,8 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.task;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
 import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
@@ -17,7 +20,29 @@ public class AnnounceTask extends Task{
 	@Override
 	public void run() {
 		
-		String message = plugin.getSettingsManager().getMessages().get( counter );
+		String message = null;
+		
+		if ( plugin.getSettingsManager().getRandom() == true ) {
+			
+			SecureRandom random = null;
+			try {
+				random = SecureRandom.getInstance("SHA1PRNG");
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+			int randInt = 0;
+			
+			if ( random != null ) {
+				randInt = random.nextInt( plugin.getSettingsManager().getMessages().size() );
+			}	
+			
+			//Integer id = (int)Math.floor((Math.random() *  plugin.getSettingsManager().getMessages().size() ) + 1);
+			message = plugin.getSettingsManager().getMessages().get( randInt );
+			
+		} else {
+			message = plugin.getSettingsManager().getMessages().get( counter );
+		}	
 		
 		// Commands
 		if ( message.startsWith("!") ) {

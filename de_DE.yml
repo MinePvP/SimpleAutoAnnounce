@@ -19,6 +19,7 @@ MESSAGES:
     COMMAND_HELP_SETTINGS_SPOUT : 'Sout Benachrichtigungn ändern'
     COMMAND_HELP_ADD : 'Eine neue Nachricht hinzufügen'
     COMMAND_HELP_DELETE : 'Eine Nachricht über die ID löschen'
+    COMMAND_HELP_FORCE : 'Eine Nachricht an alle erzwingen'
     COMMAND_HELP_LIST : 'Alle Nachrichten auflisten'
     COMMAND_HELP_SETTINGS : 'Einstellungen ändern'
     PERMISSION_YOU_HAVE_NOT_THE_PERMISSIONS : 'Du hast nicht die nötigen Rechte'

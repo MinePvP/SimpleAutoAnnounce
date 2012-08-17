@@ -22,6 +22,7 @@ public class SettingsManager {
 	
 	private String announceName;
 	private Integer time;
+	private Boolean random;
 	
 	private ArrayList<String> messages;
 	
@@ -40,10 +41,11 @@ public class SettingsManager {
 		config.addDefault("Settings.Debug", false);
 		config.addDefault("Settings.Local", "en_US");
 		
-		config.addDefault("Settings.SpoutNotification", true);
+		config.addDefault("Settings.SpoutNotification", false);
 		
 		config.addDefault("Settings.Announce.Name", "<red>Announcement");
 		config.addDefault("Settings.Time", 10);
+		config.addDefault("Settings.Random", false);
 		
 		
 		// Beispiel Nachricht
@@ -71,6 +73,8 @@ public class SettingsManager {
 		setAnnounceName( config.getString("Settings.Announce.Name") );
 		setTime( config.getInt("Settings.Time") );
 		
+		setRandom( config.getBoolean("Settings.Random") );
+		
 		List<String> list= null;
 		
 		setMessages( (List<String>) config.getList("Messages"));
@@ -90,6 +94,8 @@ public class SettingsManager {
 		
 		config.set("Settings.Announce.Name", getAnnounceName() );
 		config.set("Settings.Time",	getTime() );
+		
+		config.set("Settings.Random", getRandom() );
 		
 		config.set("Messages", getMessages().toArray() );
 		
@@ -190,5 +196,15 @@ public class SettingsManager {
 
 	public void setSpout(Boolean spout) {
 		this.spout = spout;
+	}
+
+
+	public Boolean getRandom() {
+		return random;
+	}
+
+
+	public void setRandom(Boolean random) {
+		this.random = random;
 	}
 }
