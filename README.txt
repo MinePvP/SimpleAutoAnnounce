@@ -66,6 +66,13 @@ the ending (.yml)
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.7.1 ====
+* Bugfix when no Message
+==== Version 0.7 ====
+* update for 1.3.*
+* add Command /announce force <message id> to force a Message
+* add Simple Random Messages
+* add Metrics Stats ( http://metrics.griefcraft.com/plugin/SimpleAutoAnnouncer )
 ==== Version 0.6 ====
 * add easy way to add your own Language
 ==== Version 0.5.2 ====

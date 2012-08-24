@@ -145,16 +145,23 @@ public class SettingsManager {
 		
 		listIterator.next();
 		
-		for ( String message : this.messages ) {
+		if ( this.messages.size() > 1 ) {
 			
-			if ( counter == id ) {
-				listIterator.remove();
-			} else {
-				listIterator.next();
-				counter++;
+			for ( String message : this.messages ) {
+				
+				if ( counter == id ) {
+					listIterator.remove();
+					return;
+				} else {
+					listIterator.next();
+					counter++;
+				}
+				
 			}
 			
-		}
+		} else {
+			this.messages = new ArrayList<String>();
+		}	
 		
 	}
 

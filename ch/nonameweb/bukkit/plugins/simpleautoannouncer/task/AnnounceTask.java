@@ -34,48 +34,62 @@ public class AnnounceTask extends Task{
 			int randInt = 0;
 			
 			if ( random != null ) {
-				randInt = random.nextInt( plugin.getSettingsManager().getMessages().size() );
+				
+				if ( plugin.getSettingsManager().getMessages().size() > 0 ) {
+					randInt = random.nextInt( plugin.getSettingsManager().getMessages().size() );
+				}				
+				
 			}	
 			
 			//Integer id = (int)Math.floor((Math.random() *  plugin.getSettingsManager().getMessages().size() ) + 1);
-			message = plugin.getSettingsManager().getMessages().get( randInt );
+			if ( plugin.getSettingsManager().getMessages().size() > 0 ) {
+				message = plugin.getSettingsManager().getMessages().get( randInt );
+			}
 			
 		} else {
-			message = plugin.getSettingsManager().getMessages().get( counter );
+			
+			if ( plugin.getSettingsManager().getMessages().size() > 0 ) {
+				message = plugin.getSettingsManager().getMessages().get( counter );
+			}
+			
 		}	
 		
-		// Commands
-		if ( message.startsWith("!") ) {
+		if ( message != null ) {
 			
-			String messageNew = message.replaceFirst("!", "");			
-			
-			executeCommand(messageNew);
-			
-		} else if ( message.startsWith("@") ) {
-			
-			String[] split = message.split(" ");
-			String world = split[0].replaceFirst("@", "");
-			String messageNew = message.replaceFirst( split[0] + " ", "");
-			sendAnnounceToWorld(world, messageNew);
-			
-		} else if ( message.startsWith(")") ) {
-			next();
-		} else {
-			
-			Player[] players = this.plugin.getServer().getOnlinePlayers();
-			
-			String announce = plugin.getSettingsManager().getAnnounceName() + message;
-			
-			if ( plugin.getSettingsManager().getDebug() == true ) {
-				plugin.log(announce);
+			// Commands
+			if ( message.startsWith("!") ) {
+				
+				String messageNew = message.replaceFirst("!", "");			
+				
+				executeCommand(messageNew);
+				
+			} else if ( message.startsWith("@") ) {
+				
+				String[] split = message.split(" ");
+				String world = split[0].replaceFirst("@", "");
+				String messageNew = message.replaceFirst( split[0] + " ", "");
+				sendAnnounceToWorld(world, messageNew);
+				
+			} else if ( message.startsWith(")") ) {
+				next();
+			} else {
+				
+				Player[] players = this.plugin.getServer().getOnlinePlayers();
+				
+				String announce = plugin.getSettingsManager().getAnnounceName() + message;
+				
+				if ( plugin.getSettingsManager().getDebug() == true ) {
+					plugin.log(announce);
+				}
+							
+				for ( Player player : players ) {
+					player.sendMessage( Helper.format(announce) );
+				}
+				
+				next();
 			}
-						
-			for ( Player player : players ) {
-				player.sendMessage( Helper.format(announce) );
-			}
 			
-			next();
-		}
+		}		
 		
 	}
 	
