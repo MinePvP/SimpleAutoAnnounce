@@ -5,6 +5,9 @@ import java.security.SecureRandom;
 
 import org.bukkit.entity.Player;
 
+import com.dthielke.herochat.Channel;
+import com.dthielke.herochat.Herochat;
+
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
 
@@ -70,6 +73,25 @@ public class AnnounceTask extends Task{
 				String messageNew = message.replaceFirst( split[0] + " ", "");
 				sendAnnounceToWorld(world, messageNew);
 				
+			} else if ( message.startsWith("#") ) {
+				
+				String[] split = message.split(" ");
+				String channel = split[0].replaceFirst("#", "");
+				String messageNew = message.replaceFirst( split[0] + " ", "");
+				
+				
+				Channel heroChannel = Herochat.getChannelManager().getChannel( channel );
+				
+				if ( heroChannel != null ) {
+					
+					String announce = plugin.getSettingsManager().getAnnounceName() + messageNew;
+					
+					heroChannel.announce(  Helper.format( announce ) );
+					
+					next();
+					run();
+				}
+				
 			} else if ( message.startsWith(")") ) {
 				next();
 			} else {
@@ -114,7 +136,7 @@ public class AnnounceTask extends Task{
 		String announce = plugin.getSettingsManager().getAnnounceName() + message;
 		
 		for ( Player player : players ) {
-			
+						
 			if ( player.getWorld().getName().equalsIgnoreCase(world) ) {
 				player.sendMessage( Helper.format(announce) );
 			}

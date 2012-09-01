@@ -66,6 +66,8 @@ the ending (.yml)
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.8 ====
+* add HeroChat Channel Support
 ==== Version 0.7.1 ====
 * Bugfix when no Message
 ==== Version 0.7 ====

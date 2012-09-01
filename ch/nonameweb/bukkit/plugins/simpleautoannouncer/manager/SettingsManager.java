@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.FileConfiguration;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
 
