@@ -24,7 +24,7 @@ public class ListCommand {
 			
 			player.sendMessage( ChatColor.GREEN + "-----------------------------------------------------");
 			
-			player.sendMessage( ChatColor.YELLOW + "ID - " + local.getStr("COMMAND_LIST_MESSAGE"));
+			player.sendMessage( local.getStr("COMMAND_LIST_MESSAGE"));
 			
 			Integer id = 0;
 			

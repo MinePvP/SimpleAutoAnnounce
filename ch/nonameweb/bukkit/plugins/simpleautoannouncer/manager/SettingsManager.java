@@ -42,15 +42,16 @@ public class SettingsManager {
 		
 		config.addDefault("Settings.SpoutNotification", false);
 		
-		config.addDefault("Settings.Announce.Name", "<red>Announcement");
+		config.addDefault("Settings.Announce.Name", "<red>Announcement <white>: ");
 		config.addDefault("Settings.Time", 10);
 		config.addDefault("Settings.Random", false);
 		
 		
 		// Beispiel Nachricht
 		ArrayList<String> message = new ArrayList<String>();
-		message.add("<yellow>MKD50 will be your new Master");
-		message.add("<dark_red>Your Minecraft Client will Explode in 20sec <tick> <tick>");
+		message.add("<yellow>Test Message 1");
+		message.add("<yellow>Test Message 2");
+		message.add("<yellow>Test Message 3");
 
 		config.addDefault("Messages", message);
 		
@@ -74,7 +75,7 @@ public class SettingsManager {
 		
 		setRandom( config.getBoolean("Settings.Random") );
 		
-		List<String> list= null;
+		List<String> list = null;
 		
 		setMessages( (List<String>) config.getList("Messages"));
 		

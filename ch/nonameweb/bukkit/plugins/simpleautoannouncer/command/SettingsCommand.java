@@ -35,9 +35,9 @@ public class SettingsCommand {
 						settingsManager.save();
 						
 						if ( Boolean.parseBoolean( subargs[1]) == true ) {
-							player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_DEBUG_ON"));
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_DEBUG_ON"));
 						} else {
-							player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_DEBUG_OFF"));
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_DEBUG_OFF"));
 						}
 						
 						
@@ -50,7 +50,7 @@ public class SettingsCommand {
 					if ( subargs[1].equalsIgnoreCase("") == false  ) {
 						settingsManager.setAnnounceName( subargs[1] );
 						settingsManager.save();
-						player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_ANNOUNCE") + Helper.format( subargs[1] ));
+						player.sendMessage( local.getStr("COMMAND_SETTINGS_ANNOUNCE") + Helper.format( subargs[1] ));
 					} else {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
@@ -61,7 +61,7 @@ public class SettingsCommand {
 						settingsManager.setLocal( subargs[1] );
 						settingsManager.save();
 						plugin.resetLocal();						
-						player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_LOCAL") + subargs[1] );
+						player.sendMessage( local.getStr("COMMAND_SETTINGS_LOCAL") + subargs[1] );
 					} else {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
@@ -76,9 +76,9 @@ public class SettingsCommand {
 						settingsManager.save();
 						
 						if ( Boolean.parseBoolean( subargs[1]) == true ) {
-							player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_SPOU_ON"));
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_SPOU_ON"));
 						} else {
-							player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_SPOU_OFF"));
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_SPOU_OFF"));
 						}
 					
 					} else {
@@ -95,7 +95,7 @@ public class SettingsCommand {
 							settingsManager.setTime(time);
 							settingsManager.save();
 							plugin.restartAutoAnnounceTask();
-							player.sendMessage(ChatColor.GREEN + local.getStr("COMMAND_SETTINGS_TIME", time.toString()) );
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_TIME", time.toString()) );
 						} else {
 							player.sendMessage(ChatColor.RED + "/announce help settings");
 						}
@@ -104,6 +104,27 @@ public class SettingsCommand {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
 					
+					
+				} else if ( subargs[0].equalsIgnoreCase("random") ) {
+					
+					Boolean bool = null;
+					bool = Boolean.parseBoolean( subargs[1] );
+					
+					if (  bool == true || bool == false ) {
+						settingsManager.setRandom( Boolean.parseBoolean( subargs[1] ) );
+						settingsManager.save();
+						plugin.restartAutoAnnounceTask();
+						
+						if ( Boolean.parseBoolean( subargs[1]) == true ) {
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_RANDOM_ON") );
+						} else {
+							player.sendMessage( local.getStr("COMMAND_SETTINGS_RANDOM_OFF") );
+						}
+						
+						
+					} else {
+						player.sendMessage(ChatColor.RED + "/announce help settings");
+					}
 					
 				} else {
 					player.sendMessage(ChatColor.RED + "/announce help settings");

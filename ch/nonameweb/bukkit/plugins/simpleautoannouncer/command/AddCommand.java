@@ -1,9 +1,7 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
@@ -23,10 +21,9 @@ public class AddCommand {
 		
 		if ( player.hasPermission("announce.add") || player.hasPermission("announce.admin") || player.isOp() ) {
 			
-			
 			if ( subargs.length < 1 ) {
 				player.sendMessage( local.getStr("COMMAND_HOW_TO") );
-				player.sendMessage( ChatColor.YELLOW +"/announce add <yellow> " + local.getStr("COMMAND_ADD_THIS_IS_A_MESSAGE") );
+				player.sendMessage( local.getStr("COMMAND_HOW_TO_ADD") );
 				return;
 			}
 			
@@ -38,11 +35,9 @@ public class AddCommand {
 			
 			settingsManager.addMessage( message );
 			settingsManager.save();
-			player.sendMessage( ChatColor.GREEN + local.getStr("COMMAND_ADD_MESSAGE_ADDED", message) );
-			player.sendMessage(Helper.format(message));
-			
+			player.sendMessage( local.getStr("COMMAND_ADD_MESSAGE_ADDED", message) );			
 		} else {
-			player.sendMessage(  local.getStr("PERMISSION_YOU_HAVE_NOT_THE_PERMISSIONS") + " (announce.add).");
+			player.sendMessage( local.getStr("PERMISSION_YOU_HAVE_NOT_THE_PERMISSIONS") + " (announce.add).");
 		}
 		
 	}

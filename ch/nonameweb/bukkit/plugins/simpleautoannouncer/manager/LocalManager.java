@@ -1,8 +1,7 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.manager;
 
-import java.io.File;
-
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.CustomConfig;
+import ch.nonameweb.bukkit.plugins.simpleautoannouncer.Helper;
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
 
 public class LocalManager {
@@ -29,7 +28,7 @@ public class LocalManager {
 		
 		String string = config.getConfig().getString( "MESSAGES." + name );
 		
-		return string;
+		return Helper.format(string);
 		
 	}
 	
@@ -38,10 +37,10 @@ public class LocalManager {
 		String string = config.getConfig().getString( "MESSAGES." + name );
 		
 		if ( attr1.equalsIgnoreCase("") == false ) {
-			string.replace("$1", attr1);
+			string = string.replace("$1", attr1);
 		}
 		
-		return string;
+		return Helper.format(string);
 		
 	}
 	
@@ -50,14 +49,14 @@ public class LocalManager {
 		String string = config.getConfig().getString( "MESSAGES." + name );
 		
 		if ( attr1.equalsIgnoreCase("") == false ) {
-			string.replace("$1", attr1);
+			string = string.replace("$1", attr1);
 		}
 		
 		if ( attr2.equalsIgnoreCase("") == false ) {
-			string.replace("$2", attr2);
+			string = string.replace("$2", attr2);
 		}
 		
-		return string;
+		return Helper.format(string);
 		
 	}	
 	
@@ -66,18 +65,18 @@ public class LocalManager {
 		String string = config.getConfig().getString( "MESSAGES." + name );
 		
 		if ( attr1.equalsIgnoreCase("") == false ) {
-			string.replace("$1", attr1);
+			string = string.replace("$1", attr1);
 		}
 		
 		if ( attr2.equalsIgnoreCase("") == false ) {
-			string.replace("$2", attr2);
+			string = string.replace("$2", attr2);
 		}
 		
 		if ( attr3.equalsIgnoreCase("") == false ) {
-			string.replace("$3", attr3);
+			string = string.replace("$3", attr3);
 		}
 		
-		return string;
+		return Helper.format(string);
 		
 	}
 	

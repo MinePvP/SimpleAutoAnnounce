@@ -16,12 +16,14 @@ Message:
   - 'Announcement for all People' -> 8.40am
   - ')'
   - 'Announcement' -> 8.50am
-
+  - '#Staff This Message will send in the HeroChat Channel Staff' -> 9.00
+  - '#Handel This Message will send in the HeroChat Channel Hanel' 9.00
 
 === Commands ===
 */announce help
 */announce help settings
 */announce add
+*/announce force
 */announce delete
 */announce list
 */announce settings
@@ -57,6 +59,7 @@ the ending (.yml)
 === Permissions ===
 * **announce.add**  // for add messages
 * **announce.delete** // for delete messages
+* **announce.force** // for force a message
 * **announce.list** // for list all messages
 * **announce.settings** // to change the settings
 * **announce.admin** // all permissions in one
@@ -66,6 +69,9 @@ the ending (.yml)
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.8.1 ====
+* many Bugfixes!
+* Settings add Random
 ==== Version 0.8 ====
 * add HeroChat Channel Support
 ==== Version 0.7.1 ====
@@ -75,28 +81,3 @@ the ending (.yml)
 * add Command /announce force <message id> to force a Message
 * add Simple Random Messages
 * add Metrics Stats ( http://metrics.griefcraft.com/plugin/SimpleAutoAnnouncer )
-==== Version 0.6 ====
-* add easy way to add your own Language
-==== Version 0.5.2 ====
-* remove the announce ":" now you can add your own
-* works with Craftbukkit-1.2.3-R0
-==== Version 0.5.1 ====
-* works with Craftbukkit-1.1-R4
-==== Version 0.5 ====
-* add Commands as a Message
-* add diffrent World Messages
-==== Version 0.4.1 ====
-* fix German <-> English
-==== Version 0.4 ====
-* better Spout Notification
-* bug fix when no SpoutPlugin installed
-* other small stuff for Multi-Language
-* add Command Alias /saa
-==== Version 0.3 ====
-* add simple Spout Notification
-* add Multi-Language (German and English)
-* fix some Bugs
-==== Version 0.2 ====
-* add InGame Settings
-==== Version 0.1 ====
-* Initial Releas

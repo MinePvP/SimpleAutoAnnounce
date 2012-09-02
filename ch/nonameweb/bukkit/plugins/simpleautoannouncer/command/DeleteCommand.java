@@ -1,6 +1,5 @@
 package ch.nonameweb.bukkit.plugins.simpleautoannouncer.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer;
@@ -24,7 +23,7 @@ public class DeleteCommand {
 			
 			if ( subargs.length < 1 ) {
 				player.sendMessage( local.getStr("COMMAND_HOW_TO") );
-				player.sendMessage( ChatColor.YELLOW +"/announce delete 2");
+				player.sendMessage( local.getStr("COMMAND_HOW_TO_DELETE") );
 				return;
 			}
 			
@@ -32,13 +31,13 @@ public class DeleteCommand {
 			id = Integer.parseInt( subargs[0] );
 			
 			if ( id >= settingsManager.getMessages().size() ) {
-				player.sendMessage( ChatColor.RED + local.getStr("COMMAND_DELETE_ERROR_NO_MESSAGE") );
+				player.sendMessage( local.getStr("COMMAND_DELETE_ERROR_NO_MESSAGE") );
 				return;
 			}
 			
 			settingsManager.removeMessage(id);
 			settingsManager.save();
-			player.sendMessage( ChatColor.GREEN +  local.getStr("COMMAND_DELETE_MESSAGE_DELETET") );
+			player.sendMessage( local.getStr("COMMAND_DELETE_MESSAGE_DELETET") );
 			
 		} else {
 			player.sendMessage( local.getStr("PERMISSION_YOU_HAVE_NOT_THE_PERMISSIONS") + " (announce.delete).");
