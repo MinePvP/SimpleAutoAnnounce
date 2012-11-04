@@ -18,6 +18,10 @@ Message:
   - 'Announcement' -> 8.50am
   - '#Staff This Message will send in the HeroChat Channel Staff' -> 9.00
   - '#Handel This Message will send in the HeroChat Channel Hanel' 9.00
+  - ')'
+  - '&permission.test This is a Message for Player who have the Permission <bold>permission.test'
+  - '&permission.test.2 This is a <underline>Message<reset> for Player who have the Permission <bold>permission.test.2'
+  - ')'
 
 === Commands ===
 */announce help
@@ -26,6 +30,7 @@ Message:
 */announce force
 */announce delete
 */announce list
+*/announce reload
 */announce settings
 
 === Colors ===
@@ -46,9 +51,18 @@ Message:
 *<yellow>
 *<white>
 
+=== TextSyles ===
+*<bold>
+*<underline>
+*<italic>
+*<strikethrough>
+*<reset>
+
 === Language ===
 * English (Default)
 * German
+* French (thanks to Plumeex)
+* Italien (thanks to Andreades)
 
 You can add your own Language! Copy the en_US.yml file to 
 yourLanguage.yml and Change the Messages in the the File.
@@ -61,6 +75,7 @@ the ending (.yml)
 * **announce.delete** // for delete messages
 * **announce.force** // for force a message
 * **announce.list** // for list all messages
+* **announce.reload** // for reload the configuration
 * **announce.settings** // to change the settings
 * **announce.admin** // all permissions in one
 
@@ -69,6 +84,16 @@ the ending (.yml)
 * You have a Nice Feature Idea for this Plugin?
 
 === Changelog ===
+==== Version 0.9 ====
+* works with Bukkit 1.4.2
+* fix reload command
+==== Version 0.9 ====
+* add Command Reload
+* add Language French... thanks to Plumeex!
+* add Language Italien... thanks to Andreades!
+* add simple Permissions Support with "&announcer.test"
+* fix some Language fails
+* fix some Command Issues
 ==== Version 0.8.1 ====
 * many Bugfixes!
 * Settings add Random

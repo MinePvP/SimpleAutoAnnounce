@@ -1,8 +1,0 @@
-name: SimpleAutoAnnouncer
-main: ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer
-version: 0.8.1
-commands:
-  announce:
-    description: Main Command
-  saa:
-    description: Main Command Alias
