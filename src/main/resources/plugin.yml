@@ -1,5 +1,5 @@
 name: SimpleAutoAnnouncer
-main: ch.nonameweb.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer
+main: ch.minepvp.bukkit.plugins.simpleautoannouncer.SimpleAutoAnnouncer
 version: 0.9.1
 commands:
   announce:
