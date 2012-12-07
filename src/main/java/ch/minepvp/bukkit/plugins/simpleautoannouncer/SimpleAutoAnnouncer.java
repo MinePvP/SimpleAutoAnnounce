@@ -3,7 +3,6 @@ package ch.minepvp.bukkit.plugins.simpleautoannouncer;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
@@ -11,7 +10,6 @@ import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.metrics.Metrics;
-import ch.minepvp.bukkit.plugins.simpleautoannouncer.task.AnnounceSpoutTask;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.task.AnnounceTask;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.task.Task;
 
@@ -23,10 +21,7 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	private CommandManager commandManager;
 	private TaskManager taskManager;
 	private LocalManager localManager;
-	
-	// Spout
-	private Boolean isSpoutServer;
-	
+
 	private SimpleAutoAnnouncerPlayerListener playerListener;
 	
 	@Override
@@ -40,15 +35,6 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
             metrics.start();
 		} catch (IOException e) { // Failed to submit the stats :-(
 			System.out.println("Error Submitting stats!");
-		}
-		
-		// Spout server detection
-		try {
-			Class.forName("org.getspout.spoutapi.player.SpoutPlayer");
-			isSpoutServer = true;
-			
-		} catch (ClassNotFoundException e) {
-			isSpoutServer = false;
 		}
 
 		// Resources
@@ -74,7 +60,7 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		
+
 		this.settingsManager.save();
 		saveConfig();
 		this.log("Disabled");
@@ -86,13 +72,8 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	
 	public void createAutoAnnounceTask() {
 		
-		Task task = null;
-		
-		if ( this.isSpoutServer() == true ) {
-			task = new AnnounceSpoutTask();
-		} else {
-			task = new AnnounceTask();
-		}
+		Task task = new AnnounceTask();
+
 		
 		long delay = 0;
 		long time = 0;
@@ -136,8 +117,5 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 	public LocalManager getLocalManager() {
 		return this.localManager;
 	}
-	
-	public Boolean isSpoutServer() {
-		return this.isSpoutServer;
-	}
+
 }

@@ -112,15 +112,20 @@ public class AnnounceTask extends Task{
 			} else {
 				
 				Player[] players = this.plugin.getServer().getOnlinePlayers();
-				
-				String announce = plugin.getSettingsManager().getAnnounceName() + message;
-				
-				if ( plugin.getSettingsManager().getDebug() == true ) {
-					plugin.log(announce);
-				}
-							
+                String[] lines = message.split("<line>");
+
 				for ( Player player : players ) {
-					player.sendMessage( Helper.format(announce) );
+
+                    if ( lines.length > 0 ) {
+
+                        for ( String line : lines ) {
+                            player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + line ) );
+                        }
+
+                    } else {
+                        player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + message ) );
+                    }
+
 				}
 				
 				next();
@@ -147,19 +152,25 @@ public class AnnounceTask extends Task{
 	public void sendAnnounceToWorld( String world, String message ) {
 		
 		Player[] players = this.plugin.getServer().getOnlinePlayers();
-		
-		String announce = plugin.getSettingsManager().getAnnounceName() + message;
+
+        String[] lines = message.split("<line>");
 		
 		for ( Player player : players ) {
-						
+
 			if ( player.getWorld().getName().equalsIgnoreCase(world) ) {
-				player.sendMessage( Helper.format(announce) );
+
+                if ( lines.length > 0 ) {
+
+                    for ( String line : lines ) {
+                        player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + line ) );
+                    }
+
+                } else {
+                    player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + message ) );
+                }
+
 			}
 			
-		}
-		
-		if ( plugin.getSettingsManager().getDebug() == true ) {
-			plugin.log( world + " -> " + announce );
 		}
 		
 		next();
@@ -170,12 +181,22 @@ public class AnnounceTask extends Task{
 
         Player[] players = this.plugin.getServer().getOnlinePlayers();
 
-        String announce = plugin.getSettingsManager().getAnnounceName() + message;
+        String[] lines = message.split("<line>");
 
         for ( Player player : players ) {
 
             if ( player.hasPermission(permission) ) {
-                player.sendMessage( Helper.format(announce) );
+
+                if ( lines.length > 0 ) {
+
+                    for ( String line : lines ) {
+                        player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + line ) );
+                    }
+
+                } else {
+                    player.sendMessage( Helper.format( plugin.getSettingsManager().getAnnounceName() + message ) );
+                }
+
             }
 
         }

@@ -66,25 +66,6 @@ public class SettingsCommand {
 						player.sendMessage(ChatColor.RED + "/announce help settings");
 					}
 					
-				} else if ( subargs[0].equalsIgnoreCase("spout") ) {
-					
-					Boolean bool = null;
-					bool = Boolean.parseBoolean( subargs[1] );
-					
-					if (  bool == true || bool == false ) {
-						settingsManager.setSpout( Boolean.parseBoolean( subargs[1] ) );
-						settingsManager.save();
-						
-						if ( Boolean.parseBoolean( subargs[1]) == true ) {
-							player.sendMessage( local.getStr("COMMAND_SETTINGS_SPOU_ON"));
-						} else {
-							player.sendMessage( local.getStr("COMMAND_SETTINGS_SPOU_OFF"));
-						}
-					
-					} else {
-						player.sendMessage(ChatColor.RED + "/announce help settings");
-					}
-					
 				} else if ( subargs[0].equalsIgnoreCase("time") ) {
 					
 					try {

@@ -17,8 +17,7 @@ public class SettingsManager {
 	
 	private Boolean debug;
 	private String local;
-	private Boolean spout;
-	
+
 	private String announceName;
 	private Integer time;
 	private Boolean random;
@@ -39,8 +38,6 @@ public class SettingsManager {
 		
 		config.addDefault("Settings.Debug", false);
 		config.addDefault("Settings.Local", "en_US");
-		
-		config.addDefault("Settings.SpoutNotification", false);
 		
 		config.addDefault("Settings.Announce.Name", "<red>Announcement <white>: ");
 		config.addDefault("Settings.Time", 10);
@@ -69,8 +66,7 @@ public class SettingsManager {
 		
 		setDebug( config.getBoolean("Settings.Debug") );
 		setLocal( config.getString("Settings.Local") );
-		setSpout( config.getBoolean("Settings.SpoutNotification") );
-		
+
 		setAnnounceName( config.getString("Settings.Announce.Name") );
 		setTime( config.getInt("Settings.Time") );
 		
@@ -91,8 +87,7 @@ public class SettingsManager {
 		
 		config.set("Settings.Debug", getDebug() );
 		config.set("Settings.Local", getLocal() );
-		config.set("Settings.SpoutNotification", getSpout() );
-		
+
 		config.set("Settings.Announce.Name", getAnnounceName() );
 		config.set("Settings.Time",	getTime() );
 		
@@ -195,17 +190,6 @@ public class SettingsManager {
 	public void setLocal(String lang) {
 		this.local = lang;
 	}
-
-
-	public Boolean getSpout() {
-		return spout;
-	}
-
-
-	public void setSpout(Boolean spout) {
-		this.spout = spout;
-	}
-
 
 	public Boolean getRandom() {
 		return random;
