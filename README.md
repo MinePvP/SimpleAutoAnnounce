@@ -84,13 +84,16 @@ the ending (.yml)
 - You have a Nice Feature Idea for this Plugin?
 
 ## Changelog
+
 ###Version 0.9.2
 * add Multiline Message Support
 * works with Bukkit 1.4.5
 * remove ugly Spout Support
+
 ### Version 0.9.1
 * works with Bukkit 1.4.2
 * fix reload command
+
 ### Version 0.9
 * add Command Reload
 * add Language French... thanks to Plumeex!
@@ -98,8 +101,10 @@ the ending (.yml)
 * add simple Permissions Support with "&announcer.test"
 * fix some Language fails
 * fix some Command Issues
+
 ### Version 0.8.1
 * many Bugfixes!
 * Settings add Random
+
 ### Version 0.8
 * add HeroChat Channel Support
