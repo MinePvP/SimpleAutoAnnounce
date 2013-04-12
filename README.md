@@ -35,29 +35,29 @@ Message:
 - /announce settings
 
 ## Colors
-- <black>
-- <dark_blue>
-- <dark_green>
-- <dark_aqua>
-- <dark_red>
-- <dark_purple>
-- <gold>
-- <gray>
-- <dark_gray>
-- <blue>
-- <green>
-- <aqua>
-- <red>
-- <light_purple>
-- <yellow>
-- <white>
+- black
+- dark_blue
+- dark_green
+- dark_aqua
+- dark_red
+- dark_purple
+- gold
+- gray
+- dark_gray
+- blue
+- green
+- aqua
+- red
+- light_purple
+- yellow
+- white
 
 ## TextSyles
-- <bold>
-- <underline>
-- <italic>
-- <strikethrough>
-- <reset>
+- bold
+- underline
+- italic
+- strikethrough
+- reset
 
 ## Language
 - English (Default)
@@ -85,6 +85,11 @@ the ending (.yml)
 
 ## Changelog
 
+###Version 1.0
+* reworked Metrics add new Plots
+* /announce help show only the things you can use
+* code cleanups
+
 ###Version 0.9.2
 * add Multiline Message Support
 * works with Bukkit 1.4.5
@@ -102,9 +107,3 @@ the ending (.yml)
 * fix some Language fails
 * fix some Command Issues
 
-### Version 0.8.1
-* many Bugfixes!
-* Settings add Random
-
-### Version 0.8
-* add HeroChat Channel Support
