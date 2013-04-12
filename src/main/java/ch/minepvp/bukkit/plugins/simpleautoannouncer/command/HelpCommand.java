@@ -19,7 +19,7 @@ public class HelpCommand {
 		if ( subargs.length > 0 ) {
 			
 			if ( subargs[0].equalsIgnoreCase("settings") ) {
-				
+
 				player.sendMessage( local.getStr("COMMAND_HELP_SETTINGS_DEBUG"));
 				player.sendMessage( local.getStr("COMMAND_HELP_SETTINGS_ANNOUNCE"));
 				player.sendMessage( local.getStr("COMMAND_HELP_SETTINGS_TIME"));
@@ -29,14 +29,31 @@ public class HelpCommand {
 			}
 			
 		} else {
-			
-			player.sendMessage( local.getStr("COMMAND_HELP_ADD"));
-			player.sendMessage( local.getStr("COMMAND_HELP_DELETE"));
-			player.sendMessage( local.getStr("COMMAND_HELP_FORCE"));
-			player.sendMessage( local.getStr("COMMAND_HELP_LIST"));
-			player.sendMessage( local.getStr("COMMAND_HELP_SETTINGS"));
-            player.sendMessage( local.getStr("COMMAND_HELP_RELOAD"));
-			
+
+            if ( player.hasPermission("announce.add") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_ADD"));
+            }
+
+            if ( player.hasPermission("announce.delete") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_DELETE"));
+            }
+
+            if ( player.hasPermission("announce.force") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_FORCE"));
+            }
+
+            if ( player.hasPermission("announce.list") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_LIST"));
+            }
+
+            if ( player.hasPermission("announce.settings") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_SETTINGS"));
+            }
+
+            if ( player.hasPermission("announce.reload") ) {
+                player.sendMessage( local.getStr("COMMAND_HELP_RELOAD"));
+            }
+
 		}
 		
 		player.sendMessage( ChatColor.GREEN + "-----------------------------------------------------");
