@@ -56,7 +56,7 @@ public class SettingsManager {
 		config.options().copyDefaults(true);
 		plugin.saveConfig();
 		
-		plugin.log("Config : Defaults load");
+		plugin.log("Config : Defaults loaded");
 	}
 	
 	
@@ -76,7 +76,7 @@ public class SettingsManager {
 		
 		setMessages( (List<String>) config.getList("Messages"));
 		
-		plugin.log("Config : load");
+		plugin.log("Config : loaded");
 	}
 	
 	
@@ -98,7 +98,7 @@ public class SettingsManager {
 		config.set("Messages", this.messages.toArray());
 		
 		plugin.saveConfig();
-		plugin.log("Config : save");
+		plugin.log("Config : saved");
 	}
 
 

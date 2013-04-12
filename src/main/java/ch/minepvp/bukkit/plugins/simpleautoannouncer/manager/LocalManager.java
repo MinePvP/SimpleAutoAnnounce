@@ -19,9 +19,6 @@ public class LocalManager {
 	
 	public void load() {
 		config = new CustomConfig( plugin.getSettingsManager().getLocal() + ".yml" );
-		
-		plugin.log( config.getConfig().getString("MESSAGES.COMMAND_HOW_TO"));
-		
 	}
 	
 	public String getStr( String name ) {
