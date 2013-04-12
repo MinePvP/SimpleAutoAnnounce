@@ -9,9 +9,9 @@ import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.CommandManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.LocalManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.SettingsManager;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.manager.TaskManager;
-import ch.minepvp.bukkit.plugins.simpleautoannouncer.metrics.Metrics;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.task.AnnounceTask;
 import ch.minepvp.bukkit.plugins.simpleautoannouncer.task.Task;
+import org.mcstats.Metrics;
 
 public class SimpleAutoAnnouncer extends JavaPlugin {
 
@@ -29,14 +29,6 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		
 		plugin = this;
 
-		// Metrics Statistik
-		try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-		} catch (IOException e) { // Failed to submit the stats :-(
-			System.out.println("Error Submitting stats!");
-		}
-
 		// Resources
 		saveResource("en_US.yml", true);
 		saveResource("de_DE.yml", true);
@@ -48,6 +40,61 @@ public class SimpleAutoAnnouncer extends JavaPlugin {
 		this.localManager = new LocalManager();
 		this.commandManager = new CommandManager();
 		this.taskManager = new TaskManager();
+
+        // Metrics Statistik
+        try {
+            Metrics metrics = new Metrics(this);
+
+
+            // Amount of MessageGroups
+            metrics.addCustomData(new Metrics.Plotter("Total Messages") {
+
+                @Override
+                public int getValue() {
+                    return settingsManager.getMessages().size();
+                }
+
+            });
+
+            // Amount of MessageGroups
+            metrics.addCustomData(new Metrics.Plotter("Messages Total") {
+
+                @Override
+                public int getValue() {
+                    return settingsManager.getMessages().size();
+                }
+
+            });
+
+            // Announce Time
+            metrics.addCustomData(new Metrics.Plotter("Announce Time") {
+
+                @Override
+                public int getValue() {
+                    return settingsManager.getTime();
+                }
+
+            });
+
+            // Random?
+            metrics.addCustomData(new Metrics.Plotter("Messages Random") {
+
+                @Override
+                public int getValue() {
+
+                    if ( settingsManager.getRandom() ) {
+                        return 1;
+                    }
+
+                    return 0;
+                }
+
+            });
+
+            metrics.start();
+        } catch (IOException e) { // Failed to submit the stats :-(
+            System.out.println("Error Submitting stats!");
+        }
 
 		// Listeners
 		this.playerListener = new SimpleAutoAnnouncerPlayerListener();
