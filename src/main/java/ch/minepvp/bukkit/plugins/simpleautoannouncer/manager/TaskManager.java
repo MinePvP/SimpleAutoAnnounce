@@ -22,7 +22,7 @@ public class TaskManager {
 		
 		// TaskManagerTask für stoppen von Tasks alle 10min oder so.
 		
-		plugin.getServer().getScheduler().scheduleAsyncRepeatingTask(plugin, new StopInaktiveTasksTask(), 0, 108000L);
+		plugin.getServer().getScheduler().runTaskTimer(plugin, new StopInaktiveTasksTask(), 0, 108000L);
 		
 	}
 	
@@ -30,7 +30,7 @@ public class TaskManager {
 		
 		Integer pid = null;
 		
-		pid = plugin.getServer().getScheduler().scheduleAsyncDelayedTask(plugin, task, delay);
+        pid = plugin.getServer().getScheduler().runTaskLaterAsynchronously(plugin, task, delay).getTaskId();
 		
 		if ( pid != null ) {
 			
@@ -48,7 +48,7 @@ public class TaskManager {
 		
 		Integer pid = null;
 		
-		pid = plugin.getServer().getScheduler().scheduleAsyncRepeatingTask(plugin, task, delay, time);
+		pid = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, task, delay, time).getTaskId();
 		
 		if ( pid != null ) {
 			
